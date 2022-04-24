@@ -10,7 +10,7 @@ stdenv.mkDerivation {
   '';
   doCheck = true;
   checkPhase = ''
-    [ "$(./nix-hello-world-haskell)" = "Hello, world!" ]
+    ./nix-hello-world-haskell
   '';
   installPhase = ''
     install -d $out/bin

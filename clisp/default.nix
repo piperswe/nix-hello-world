@@ -11,7 +11,7 @@ stdenv.mkDerivation {
   '';
   doCheck = true;
   checkPhase = ''
-    [ "$(./nix-hello-world-clisp)" = "Hello, world!" ]
+    ./nix-hello-world-clisp
   '';
   installPhase = ''
     install -d $out/bin

@@ -10,7 +10,7 @@ stdenv.mkDerivation {
   '';
   doCheck = true;
   checkPhase = ''
-    [ "$(./nix-hello-world-ocaml)" = "Hello, world!" ]
+    ./nix-hello-world-ocaml
   '';
   installPhase = ''
     install -d $out/bin

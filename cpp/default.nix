@@ -7,7 +7,7 @@ stdenv.mkDerivation {
   '';
   doCheck = true;
   checkPhase = ''
-    [ "$(./nix-hello-world-cpp)" = "Hello, world!" ]
+    ./nix-hello-world-cpp
   '';
   installPhase = ''
     install -d $out/bin

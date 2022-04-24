@@ -11,7 +11,7 @@ stdenv.mkDerivation {
   '';
   doCheck = true;
   checkPhase = ''
-    [ "$(./nix-hello-world-zig)" = "Hello, world!" ]
+    ./nix-hello-world-zig
   '';
   installPhase = ''
     install -d $out/bin

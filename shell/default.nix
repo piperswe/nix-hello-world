@@ -4,7 +4,7 @@ stdenv.mkDerivation {
   src = ./.;
   doCheck = true;
   checkPhase = ''
-    [ "$(./main.sh)" = "Hello, world!" ]
+    ./main.sh
   '';
   installPhase = ''
     install -d $out/bin

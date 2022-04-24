@@ -13,7 +13,7 @@ stdenv.mkDerivation {
   '';
   doCheck = true;
   checkPhase = ''
-    [ "$(./nix-hello-world-rust)" = "Hello, world!" ]
+    ./nix-hello-world-rust
   '';
   installPhase = ''
     install -d $out/bin

@@ -10,7 +10,7 @@ stdenv.mkDerivation {
   '';
   doCheck = true;
   checkPhase = ''
-    [ "$(./nix-hello-world-swift)" = "Hello, world!" ]
+    ./nix-hello-world-swift
   '';
   installPhase = ''
     install -d $out/bin

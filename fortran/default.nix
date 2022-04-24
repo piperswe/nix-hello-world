@@ -10,7 +10,7 @@ stdenv.mkDerivation {
   '';
   doCheck = true;
   checkPhase = ''
-    [ "$(./nix-hello-world-fortran)" = "Hello, world!" ]
+    ./nix-hello-world-fortran
   '';
   installPhase = ''
     install -d $out/bin

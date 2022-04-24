@@ -11,7 +11,7 @@ stdenv.mkDerivation {
   '';
   doCheck = true;
   checkPhase = ''
-    [ "$(./nix-hello-world-python)" = "Hello, world!" ]
+    ./nix-hello-world-python
   '';
   installPhase = ''
     install -d $out/bin
