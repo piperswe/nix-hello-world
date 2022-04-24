@@ -1,0 +1,13 @@
+{
+    "recommendations": [
+        "haskell.haskell",
+        "ms-vscode.cpptools",
+        "mattn.lisp",
+        "krvajalm.linter-gfortran",
+        "arrterian.nix-env-selector",
+        "jnoortheen.nix-ide",
+        "sswg.swift-lang",
+        "tiehuis.zig",
+        "freebroccolo.reasonml"
+    ]
+}
