@@ -6,12 +6,16 @@ stdenv.mkDerivation {
     python3
   ];
   buildPhase = ''
-    python3 -m compileall main.py
-    ls -a
+    mv main.py nix-hello-world-python
+    python3 -m compileall nix-hello-world-python
+  '';
+  doCheck = true;
+  checkPhase = ''
+    [ "$(./nix-hello-world-python)" = "Hello, world!" ]
   '';
   installPhase = ''
     install -d $out/bin
-    install -m755 main.py $out/bin/nix-hello-world-python
+    install -m755 nix-hello-world-python $out/bin/
     cp -R __pycache__ $out/bin/
   '';
 }

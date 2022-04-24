@@ -11,6 +11,10 @@ stdenv.mkDerivation {
   buildPhase = ''
     rustc -O -o nix-hello-world-rust main.rs
   '';
+  doCheck = true;
+  checkPhase = ''
+    [ "$(./nix-hello-world-rust)" = "Hello, world!" ]
+  '';
   installPhase = ''
     install -d $out/bin
     install -m755 ./nix-hello-world-rust $out/bin/

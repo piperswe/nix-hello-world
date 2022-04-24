@@ -9,6 +9,10 @@ stdenv.mkDerivation {
     zig build-exe main.zig
     mv main nix-hello-world-zig
   '';
+  doCheck = true;
+  checkPhase = ''
+    [ "$(./nix-hello-world-zig)" = "Hello, world!" ]
+  '';
   installPhase = ''
     install -d $out/bin
     install -m755 ./nix-hello-world-zig $out/bin/

@@ -8,6 +8,10 @@ stdenv.mkDerivation {
   buildPhase = ''
     ocamlc -o nix-hello-world-ocaml main.ml
   '';
+  doCheck = true;
+  checkPhase = ''
+    [ "$(./nix-hello-world-ocaml)" = "Hello, world!" ]
+  '';
   installPhase = ''
     install -d $out/bin
     install -m755 ./nix-hello-world-ocaml $out/bin/

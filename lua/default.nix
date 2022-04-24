@@ -5,6 +5,10 @@ stdenv.mkDerivation {
   buildInputs = [
     lua
   ];
+  doCheck = true;
+  checkPhase = ''
+    [ "$(./main.lua)" = "Hello, world!" ]
+  '';
   installPhase = ''
     install -d $out/bin
     install -m755 main.lua $out/bin/nix-hello-world-lua

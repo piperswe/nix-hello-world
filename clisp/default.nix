@@ -9,6 +9,10 @@ stdenv.mkDerivation {
     sbcl --eval '(compile-file "main.lisp")'
     mv main.fasl nix-hello-world-clisp
   '';
+  doCheck = true;
+  checkPhase = ''
+    [ "$(./nix-hello-world-clisp)" = "Hello, world!" ]
+  '';
   installPhase = ''
     install -d $out/bin
     install -m755 ./nix-hello-world-clisp $out/bin/
