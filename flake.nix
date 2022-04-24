@@ -4,9 +4,8 @@
   outputs = { self, nixpkgs, flake-utils }: flake-utils.lib.eachDefaultSystem(system:
     let
       pkgs = nixpkgs.legacyPackages.${system};
-      myPkgs = self.packages.${system};
     in
-    {
+    rec {
       packages = {
         nix-hello-world-c = pkgs.callPackage ./c {};
         nix-hello-world-clisp = pkgs.callPackage ./clisp {};
@@ -23,20 +22,21 @@
         nix-hello-world-zig = pkgs.callPackage ./zig {};
       };
       apps = {
-        c = flake-utils.lib.mkApp { drv = myPkgs.nix-hello-world-c; };
-        clisp = flake-utils.lib.mkApp { drv = myPkgs.nix-hello-world-clisp; };
-        cpp = flake-utils.lib.mkApp { drv = myPkgs.nix-hello-world-cpp; };
-        fortran = flake-utils.lib.mkApp { drv = myPkgs.nix-hello-world-fortran; };
-        haskell = flake-utils.lib.mkApp { drv = myPkgs.nix-hello-world-haskell; };
-        lua = flake-utils.lib.mkApp { drv = myPkgs.nix-hello-world-lua; };
-        nodejs = flake-utils.lib.mkApp { drv = myPkgs.nix-hello-world-nodejs; };
-        ocaml = flake-utils.lib.mkApp { drv = myPkgs.nix-hello-world-ocaml; };
-        python = flake-utils.lib.mkApp { drv = myPkgs.nix-hello-world-python; };
-        rust = flake-utils.lib.mkApp { drv = myPkgs.nix-hello-world-rust; };
-        shell = flake-utils.lib.mkApp { drv = myPkgs.nix-hello-world-shell; };
-        swift = flake-utils.lib.mkApp { drv = myPkgs.nix-hello-world-swift; };
-        zig = flake-utils.lib.mkApp { drv = myPkgs.nix-hello-world-zig; };
+        c = flake-utils.lib.mkApp { drv = packages.nix-hello-world-c; };
+        clisp = flake-utils.lib.mkApp { drv = packages.nix-hello-world-clisp; };
+        cpp = flake-utils.lib.mkApp { drv = packages.nix-hello-world-cpp; };
+        fortran = flake-utils.lib.mkApp { drv = packages.nix-hello-world-fortran; };
+        haskell = flake-utils.lib.mkApp { drv = packages.nix-hello-world-haskell; };
+        lua = flake-utils.lib.mkApp { drv = packages.nix-hello-world-lua; };
+        nodejs = flake-utils.lib.mkApp { drv = packages.nix-hello-world-nodejs; };
+        ocaml = flake-utils.lib.mkApp { drv = packages.nix-hello-world-ocaml; };
+        python = flake-utils.lib.mkApp { drv = packages.nix-hello-world-python; };
+        rust = flake-utils.lib.mkApp { drv = packages.nix-hello-world-rust; };
+        shell = flake-utils.lib.mkApp { drv = packages.nix-hello-world-shell; };
+        swift = flake-utils.lib.mkApp { drv = packages.nix-hello-world-swift; };
+        zig = flake-utils.lib.mkApp { drv = packages.nix-hello-world-zig; };
       };
+      checks = packages;
     }
   );
 }
